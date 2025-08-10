@@ -1,10 +1,10 @@
 {
   "name": "filemanagerapp",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.cjs",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon backend/index.js",
-    "start": "NODE_ENV=production node backend/index.js",
+    "dev": "NODE_ENV=development nodemon backend/index.cjs",
+    "start": "NODE_ENV=production node backend/index.cjs",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
