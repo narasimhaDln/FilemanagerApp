@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { FiFolder } from "react-icons/fi";
-interface Folder {
+export interface Folder {
   _id: string;
   name: string;
   totalItems: number;

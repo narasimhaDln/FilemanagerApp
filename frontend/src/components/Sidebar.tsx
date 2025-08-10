@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FiLayers, FiFolder } from "react-icons/fi";
+import { FiLayers } from "react-icons/fi";
 import { fetchFolders } from "../config/api";
 
 interface SidebarProps {
@@ -7,7 +7,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ onShowAll }) => {
-  const [folders, setFolders] = useState<{ _id: string; totalItems: number }[]>([]);
+  const [_folders, setFolders] = useState<{ _id: string; totalItems: number }[]>([]);
   const [selected, setSelected] = useState<string>("");
 
   useEffect(() => {
@@ -68,8 +68,6 @@ const Sidebar: React.FC<SidebarProps> = ({ onShowAll }) => {
           </button>
         ))}
       </div>
-
-
     </aside>
   );
 };

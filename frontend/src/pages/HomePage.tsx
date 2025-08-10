@@ -5,16 +5,26 @@ import Sidebar from "../components/Sidebar";
 import FolderGrid from "../components/FolderGrid";
 import { fetchFolders } from "../config/api";
 import { useNavigate } from "react-router-dom";
+interface Folder {
+  _id: string;
+  name: string;
+  totalItems: number;
+}
 
 const HomePage: React.FC = () => {
-  const [folders, setFolders] = useState<{ _id: string; totalItems: number }[]>(
-    []
-  );
+const [folders, setFolders] = useState<Folder[]>([]);
   const navigate = useNavigate();
 
   const loadFolders = () =>
     fetchFolders()
-      .then(setFolders)
+      .then((data) => {
+        const foldersWithName = data.map((folder: any) => ({
+          _id: folder._id,
+          name: folder.name || "unnamed FOlder",
+          totalItems:folder.totalItems,
+        }))
+        setFolders(foldersWithName)
+      })
       .catch(console.error);
 
   useEffect(() => {
