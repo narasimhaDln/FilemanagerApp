@@ -9,7 +9,7 @@ const folderRoutes = require('./src/routes/folder.routes');
 
 const app = express();
 
-require('dotenv').config({ path: '.env', debug: true }); // Added debug
+require('dotenv').config(); // Added debug
 
 // Validate environment variables
 if (
@@ -21,14 +21,15 @@ if (
   process.exit(1);
 }
 
-app.use(
-  cors({
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-  }),
-);
+// app.use(
+//   cors({
+//     origin: 'http://localhost:5173',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true,
+//   }),
+// );
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 require('dotenv').config();
 
 app.use(express.json());
@@ -40,7 +41,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(frontendPath));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(frontendPath, 'index.html'));
+    res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
   });
 }
 app.use('/api/user', userRoutes);
