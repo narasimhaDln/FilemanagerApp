@@ -16,8 +16,6 @@ Whether you need to create folders, upload documents, or browse stored files, th
 
 ---
 
-### GIT HUB LINK:
-
 ## 🚀 Features
 
 ### Backend
